@@ -1,3 +1,5 @@
+const cool = require('cool-ascii-faces');
+
 const express = require('express');
 
 const app = express();
@@ -86,7 +88,7 @@ app.get('/contact',(req, res) => {
     res.render('contact');
 });
 
-
+app.get('/cool', (req, res) => res.send(cool()));
 app.listen(4000, (req, res) => {
     console.log('express started on port 4000!');
 });
