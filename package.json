@@ -1,0 +1,27 @@
+{
+  "name": "nodejs_blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.1",
+    "body-parser": "^1.18.3",
+    "connect-mongo": "^2.0.1",
+    "edge.js": "^1.1.4",
+    "express": "^4.16.3",
+    "express-edge": "^1.0.0",
+    "express-fileupload": "^1.0.0-alpha.1",
+    "express-session": "^1.15.6",
+    "firebase": "^5.5.1",
+    "mongoose": "^5.2.17",
+    "mongoose-unique-validator": "^2.0.2",
+    "nodemon": "^1.18.4",
+    "routing": "0.0.2"
+  }
+}

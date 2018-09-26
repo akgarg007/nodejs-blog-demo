@@ -1,0 +1,76 @@
+@layout('layouts.app')
+
+@section('content')
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('/img/contact-bg.jpg')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="page-heading">
+              <h1>New Post</h1>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p>Write New Post</p>
+
+          <form action="/posts/store" method="post"  enctype="multipart/form-data">
+
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Username</label>
+                <input type="text" name="username" class="form-control" placeholder="Username" id="username" required data-validation-required-message="Please enter Username.">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Title</label>
+                <input type="text" name="title" class="form-control" placeholder="Title" id="title" required data-validation-required-message="Please enter post title.">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>subheading</label>
+                <input class="form-control" name = "subheading" placeholder="subheading" id="message" required data-validation-required-message="Please enter a subheading.">
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Content</label>
+                <textarea rows="10" class="form-control" name = "content" placeholder="Content" id="content" required data-validation-required-message="Please enter a content."></textarea>
+                <p class="help-block text-danger"></p>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="form-group floating-label-form-group controls">
+                <label>Content</label>
+                <input class="input-control file" type="file" name="image">
+              </div>
+            </div>
+
+            <br>
+            <div id="success"></div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary" id="sendMessageButton">Create Post</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+@endsection
