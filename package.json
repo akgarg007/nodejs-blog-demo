@@ -22,7 +22,7 @@
     "firebase": "^5.5.1",
     "mongoose": "^5.2.17",
     "mongoose-unique-validator": "^2.0.2",
-    "nodemon": "^1.18.4",
+    
     "routing": "0.0.2"
   }
 }
