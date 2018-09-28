@@ -5,7 +5,7 @@ const express = require('express');
 const debug = require("debug")("node-angular");
 const http = require("http");
 
-const normalizePort = val => {
+function normalizePort(val){
     var port = parseInt(val, 10);
   
     if (isNaN(port)) {
@@ -21,7 +21,7 @@ const normalizePort = val => {
     return false;
   };
   
-  const onError = error => {
+  function onError(error){
     if (error.syscall !== "listen") {
       throw error;
     }
