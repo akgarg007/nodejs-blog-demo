@@ -40,7 +40,7 @@ function normalizePort(val){
     }
   };
   
-  const onListening = () => {
+  function onListening(){
     const addr = server.address();
     const bind = typeof addr === "string" ? "pipe " + addr : "port " + port;
     debug("Listening on " + bind);
@@ -102,7 +102,7 @@ app.use(require('express-edge'));
 app.use(fileUpload());
 
 // every root uses default path with views folder to render pages
-app.set('views', `${__dirname}/views`);
+app.set('views', '${__dirname}/views');
 
 app.use('*', (req, res, next) => {
 // here we will register global middleware to access it in all the pages rendered by the edge 
