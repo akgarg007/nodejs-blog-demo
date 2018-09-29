@@ -101,7 +101,7 @@ app.use(fileUpload());
 // app.set('views', `${__dirname}/views`);
 app.set('views', '${__dirname}/views');
 
-app.use('*', (req, res, next) => {
+app.use('*', function(req, res, next) {
 // here we will register global middleware to access it in all the pages rendered by the edge 
 //  templating engine
 // using this global function, the auth middleware should be available to the edge pages
@@ -127,10 +127,10 @@ app.get('/auth/login', redirectIfAuthenticated, loginUserController);
 app.post('/users/login', authLoginController);
 app.get('/auth/logout' ,logoutUserController);
 
-app.get('/about',(req, res) => {
+app.get('/about',function(req, res) {
     res.render('about');
 });
-app.get('/contact',(req, res) => {
+app.get('/contact',function(req, res) {
     res.render('contact');
 });
 
