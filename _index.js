@@ -1,5 +1,52 @@
+
 const express = require('express');
 
+// node server connection starts
+const debug = require("debug")("node-angular");
+const http = require("http");
+
+function normalizePort(val){
+    var port = parseInt(val, 10);
+  
+    if (isNaN(port)) {
+      // named pipe
+      return val;
+    }
+  
+    if (port >= 0) {
+      // port number
+      return port;
+    }
+  
+    return false;
+  };
+  
+  function onError(error){
+    if (error.syscall !== "listen") {
+      throw error;
+    }
+    const bind = typeof addr === "string" ? "pipe " + addr : "port " + port;
+    switch (error.code) {
+      case "EACCES":
+        console.error(bind + " requires elevated privileges");
+        process.exit(1);
+        break;
+      case "EADDRINUSE":
+        console.error(bind + " is already in use");
+        process.exit(1);
+        break;
+      default:
+        throw error;
+    }
+  };
+  
+  function onListening(){
+    const addr = server.address();
+    const bind = typeof addr === "string" ? "pipe " + addr : "port " + port;
+    debug("Listening on " + bind);
+  };
+  
+// node server connection ends
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -51,9 +98,10 @@ app.use(require('express-edge'));
 app.use(fileUpload());
 
 // every root uses default path with views folder to render pages
+// app.set('views', `${__dirname}/views`);
 app.set('views', `${__dirname}/views`);
 
-app.use('*', (req, res, next) => {
+app.use('*', function(req, res, next) {
 // here we will register global middleware to access it in all the pages rendered by the edge 
 //  templating engine
 // using this global function, the auth middleware should be available to the edge pages
@@ -79,14 +127,24 @@ app.get('/auth/login', redirectIfAuthenticated, loginUserController);
 app.post('/users/login', authLoginController);
 app.get('/auth/logout' ,logoutUserController);
 
-app.get('/about',(req, res) => {
+app.get('/about',function(req, res) {
     res.render('about');
 });
-app.get('/contact',(req, res) => {
+app.get('/contact',function(req, res) {
     res.render('contact');
 });
 
 
-app.listen(process.env.PORT ||4000, (req, res) => {
-    console.log('express started on port 4000!');
-});
+// var port = (process.env.PORT || '4000');
+
+// app.listen(port, function(){
+//     console.log("Express server listening on port %d in %s mode");
+// });
+
+const port = normalizePort(process.env.PORT || "4000");
+app.set("port", port);
+
+const server = http.createServer(app);
+server.on("error", onError);
+server.on("listening", onListening);
+server.listen(port);
