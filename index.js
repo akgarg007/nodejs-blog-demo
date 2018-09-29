@@ -98,7 +98,8 @@ app.use(require('express-edge'));
 app.use(fileUpload());
 
 // every root uses default path with views folder to render pages
-app.set('views', `${__dirname}/views`);
+// app.set('views', `${__dirname}/views`);
+app.set('views', '${__dirname}/views');
 
 app.use('*', (req, res, next) => {
 // here we will register global middleware to access it in all the pages rendered by the edge 
