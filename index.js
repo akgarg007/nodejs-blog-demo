@@ -139,7 +139,7 @@ app.get('/contact',function(req, res) {
 //     console.log("Express server listening on port %d in %s mode");
 // });
 
-const port = normalizePort(process.env.PORT || "4000");
+const port = normalizePort(process.env.PORT || "80");
 app.set("port", port);
 
 const server = http.createServer(app);
