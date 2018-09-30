@@ -14,8 +14,13 @@ module.exports = (req, res) => {
 
     // and also set the directory one level up to go into the public/posts folder
     image.mv(path.resolve(__dirname, '../public/posts', image.name),(error) => {
+        // console.log(req.body);
         Post.create({
-            ...req.body,
+            username:req.body.username,
+            title: req.body.title,
+            subheading: req.body.subheading,
+            content: req.body.content,
+            // ...req.body,
             image: '/posts/'+image.name,
             author: req.session.userId
         },(error, post) => {
